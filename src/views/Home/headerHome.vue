@@ -1,4 +1,5 @@
 <template>
+  <ModalRegister v-model="toolbar" />
   <div class="column bg-pink-6">
     <div class="row col-12 items-center justify-between q-pa-lg mobile">
       <q-img
@@ -11,6 +12,7 @@
           rounded
           label="Crie um Conta"
           class="text-grey-1 q-mr-xs"
+          @click="toolbar = true"
         />
         <q-btn rounded label="Entrar" class="text-pink-6 bg-grey-1 text-bold" />
       </div>
@@ -29,6 +31,7 @@
             label="Crie uma conta gratis"
             class="text-pink-6 bg-grey-1 text-bold"
             style="width: 250px"
+            @click="toolbar = true"
           />
         </div>
         <q-img
@@ -42,8 +45,18 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import ModalRegister from "./register.vue";
 export default {
   name: "HomeHeader",
+  components: {
+    ModalRegister,
+  },
+  setup() {
+    return {
+      toolbar: ref(false),
+    };
+  },
 };
 </script>
 
