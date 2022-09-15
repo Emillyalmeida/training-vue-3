@@ -23,11 +23,23 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 import Header from "./headerHome.vue";
 export default {
   name: "PageHome",
   components: {
     Header,
+  },
+  setup() {
+    const router = useRouter();
+
+    onMounted(() => {
+      const hasToken = window.localStorage.getItem("@FeedBacker/token");
+      if (hasToken) {
+        router.push({ name: "Feedbacks" });
+      }
+    });
   },
 };
 </script>
